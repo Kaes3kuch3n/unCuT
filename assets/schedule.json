@@ -1,0 +1,52 @@
+[
+  {
+    "id": "opening",
+    "name": "Opening",
+    "type": "custom"
+  },
+  {
+    "id": "pre-ad",
+    "name": "Pre-Ad",
+    "type": "custom"
+  },
+  {
+    "id": "trailer-1",
+    "name": "First Trailer",
+    "type": "trailer"
+  },
+  {
+    "id": "ad-1",
+    "name": "First Ad Bin",
+    "type": "ad"
+  },
+  {
+    "id": "trailer-2",
+    "name": "Second Trailer",
+    "type": "trailer"
+  },
+  {
+    "id": "ad-2",
+    "name": "Second Ad Bin",
+    "type": "ad"
+  },
+  {
+    "id": "trailer-3",
+    "name": "Third Trailer",
+    "type": "trailer"
+  },
+  {
+    "id": "ad-3",
+    "name": "Third Ad Bin",
+    "type": "ad"
+  },
+  {
+    "id": "post-ad",
+    "name": "Post-Ad",
+    "type": "custom"
+  },
+  {
+    "id": "out",
+    "name": "Movie about to start",
+    "type": "custom"
+  }
+]

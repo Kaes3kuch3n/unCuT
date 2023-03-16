@@ -1,0 +1,74 @@
+{
+  "screens": [
+    {
+      "id": 1,
+      "duration": 5,
+      "slot": "opening"
+    },
+    {
+      "id": 3,
+      "duration": 5,
+      "slot": "out"
+    },
+    {
+      "id": 4,
+      "duration": 5,
+      "slot": "out"
+    },
+    {
+      "id": 5,
+      "duration": 5,
+      "slot": "out"
+    },
+    {
+      "id": 6,
+      "duration": 10,
+      "slot": "out"
+    }
+  ],
+  "ads": {
+    "scheduled": [
+      {
+        "id": 10,
+        "slot": "pre-ad",
+        "duration": 5
+      },
+      {
+        "id": 11,
+        "slot": "pre-ad",
+        "duration": 5
+      },
+      {
+        "id": 1,
+        "slot": "post-ad"
+      }
+    ],
+    "unscheduled": [
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 7
+      },
+      {
+        "id": 8
+      },
+      {
+        "id": 9,
+        "duration": 5
+      }
+    ]
+  }
+}
