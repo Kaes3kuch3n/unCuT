@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, watchEffect } from "vue";
 import DialogBox from "@/components/utils/DialogBox.vue";
+import { useI18n } from "@/stores/i18n";
+
+const { t } = useI18n();
 
 const props = defineProps<{
   show: boolean;
@@ -31,7 +34,7 @@ watchEffect(() => {
 <template>
   <DialogBox v-if="props.show">
     <p>
-      <slot />
+      <slot/>
     </p>
     <label>
       {{ label }}:
@@ -44,8 +47,8 @@ watchEffect(() => {
       />
     </label>
     <template #buttons>
-      <button @click="updateValue">Save</button>
-      <button @click="emit('update:show', false)">Cancel</button>
+      <button @click="updateValue">{{ t("input.confirm") }}</button>
+      <button @click="emit('update:show', false)">{{ t("input.abort") }}</button>
     </template>
   </DialogBox>
 </template>

@@ -5,6 +5,9 @@ import { computed, onMounted, ref, watch } from "vue";
 import InputDialog from "@/components/utils/InputDialog.vue";
 import { useDefaultsStore } from "@/stores/defaults";
 import { storeToRefs } from "pinia";
+import { useI18n } from "@/stores/i18n";
+
+const { t } = useI18n();
 
 const props = defineProps<{
   resource: Resource;
@@ -29,7 +32,6 @@ function durationToNumber(value: string | number): number {
 
 watch(duration, (newDuration) => {
   const duration = durationToNumber(newDuration);
-  console.log("setting duration:", duration);
   emit("update:duration", duration);
 });
 
@@ -44,26 +46,25 @@ onMounted(() => {
 
 <template>
   <li>
-    <font-awesome-icon :icon="`fa-solid fa-${props.resource.icon}`" />
+    <font-awesome-icon :icon="`fa-solid fa-${props.resource.icon}`"/>
     <h3>{{ props.resource.name }}</h3>
     <button
       v-if="isImage"
       @click="showOptionsDialog = true"
-      title="Edit options"
+      :title="t('content.editOptions')"
     >
-      <font-awesome-icon icon="fa-solid fa-cog" />
+      <font-awesome-icon icon="fa-solid fa-cog"/>
     </button>
-    <button @click="emit('remove')" title="Remove">
-      <font-awesome-icon icon="fa-solid fa-x" />
+    <button @click="emit('remove')" :title="t('content.remove')">
+      <font-awesome-icon icon="fa-solid fa-x"/>
     </button>
     <InputDialog
       v-model:show="showOptionsDialog"
       v-model:value="duration"
-      label="Duration"
+      :label="t('content.duration')"
       type="number"
     >
-      Please enter the duration in seconds for which this image should be
-      displayed:
+      {{ t("content.durationDialog") }}
     </InputDialog>
   </li>
 </template>

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useGeneratorStore } from "@/stores/generator";
 import { storeToRefs } from "pinia";
+import { useI18n } from "@/stores/i18n";
+
+const { t } = useI18n();
 
 const generatorStore = useGeneratorStore();
 const { selectCinema } = generatorStore;
@@ -9,15 +12,15 @@ const { selectedCinema } = storeToRefs(generatorStore);
 
 <template>
   <div>
-    Selected cinema:&nbsp;
-    <span v-if="!selectedCinema">None</span>
+    {{ t("generator.cinemas.selected") }}&nbsp;
+    <span v-if="!selectedCinema">{{ t("generator.cinemas.none") }}</span>
     <div v-if="selectedCinema" class="cinema-container">
       <div class="cinema">
         <p>{{ selectedCinema.name }}</p>
-        <p>Planned Screenings: {{ selectedCinema.screenings.length }}</p>
+        <p>{{ t("generator.cinemas.plannedScreenings", selectedCinema.screenings.length.toString()) }}</p>
       </div>
-      <button @click="selectCinema(null)" title="Deselect">
-        <font-awesome-icon icon="fa-solid fa-x" />
+      <button @click="selectCinema(null)" :title="t('generator.cinemas.deselect')">
+        <font-awesome-icon icon="fa-solid fa-x"/>
       </button>
     </div>
   </div>

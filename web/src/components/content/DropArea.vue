@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from "@/stores/i18n";
+
+const { t } = useI18n();
+
 const props = defineProps<{
   isEmpty: boolean;
 }>();
@@ -7,11 +11,10 @@ const props = defineProps<{
 <template>
   <div :class="{ 'drop-area': true, empty: props.isEmpty }">
     <p v-if="props.isEmpty">
-      Drop assets from the library or the added content drawer on the left here
-      to add them to this slot
+      {{ t("content.dropAreaDescription") }}
     </p>
     <ul v-else>
-      <slot />
+      <slot/>
     </ul>
   </div>
 </template>

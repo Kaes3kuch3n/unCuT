@@ -1,0 +1,84 @@
+{
+  "locale": "English",
+  "appName": "unCuT",
+  "tabs": {
+    "schedule": "Schedule",
+    "content": "Content",
+    "generate": "Generate"
+  },
+  "confirm": {
+    "yes": "Yes",
+    "no": "No"
+  },
+  "error": {
+    "occurred": "An error occurred:",
+    "dismiss": "Okay"
+  },
+  "input": {
+    "confirm": "Save",
+    "abort": "Cancel"
+  },
+  "contentTypes": {
+    "trailer": "Trailer",
+    "ad": "Advertisement",
+    "custom": "Custom"
+  },
+  "schedule": {
+    "add": {
+      "trailer": "+ Add Trailer Slot",
+      "ad": "+ Add Ad Slot",
+      "custom": "+ Add Custom Slot"
+    },
+    "library": {
+      "title": "Saved Schedules",
+      "loadConfirm": "Do you really want to load the schedule template \"{0}\"? The current schedule will be discarded.",
+      "clone": "Clone",
+      "delete": "Delete"
+    },
+    "slot": {
+      "unnamed": "Unnamed (Click here to enter a name)",
+      "namePlaceholder": "Name",
+      "delete": "Delete"
+    }
+  },
+  "content": {
+    "editOptions": "Edit options",
+    "remove": "Remove",
+    "duration": "Duration",
+    "durationDialog": "Please enter the duration in seconds for which this image should be displayed:",
+    "scheduled": "Scheduled Content",
+    "unscheduled": "Unscheduled Content",
+    "dropAreaDescription": "Drop assets from the library on the left here to add them to this slot",
+    "library": {
+      "title": "Library",
+      "screens": "Screens",
+      "ads": "Ads"
+    }
+  },
+  "generator": {
+    "title": "Generate",
+    "cinemas": {
+      "title": "Cinemas",
+      "search": "Search:",
+      "selected": "Selected cinema:",
+      "none": "None",
+      "deselect": "Deselect",
+      "plannedScreenings": "Planned Screenings: {0}",
+      "screenings": "Screenings",
+      "screeningsPlaceholder": "Please select a cinema in the left column"
+    },
+    "options": {
+      "title": "Options",
+      "outputDirectory": "Output Directory:",
+      "selectOutputDirectory": "Select output directory",
+      "adSchedulingStrategy": "Ad Scheduling Strategy:"
+    },
+    "generate": "Generate",
+    "generating": "Generating...",
+    "done": "Done!"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language:"
+  }
+}

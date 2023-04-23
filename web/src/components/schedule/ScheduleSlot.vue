@@ -4,6 +4,9 @@ import AddSlotMenu from "./AddSlotMenu.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { computed, nextTick, onMounted, ref } from "vue";
 import { prettySlotType } from "@/utils";
+import { useI18n } from "@/stores/i18n";
+
+const { t } = useI18n();
 
 const props = defineProps<{
   item: ScheduleSlot;
@@ -19,7 +22,7 @@ const emit = defineEmits<{
 const slotType = computed(() => prettySlotType(props.item.type));
 
 const name = computed(
-  () => props.item.name ?? "Unnamed (Click here to enter a name)"
+  () => props.item.name ?? t("schedule.slot.unnamed")
 );
 
 const newName = ref(props.item.name ?? "");
@@ -54,12 +57,12 @@ onMounted(() => {
   <div class="container">
     <div class="slot">
       <span>{{ slotType }}</span>
-      <hr />
+      <hr/>
       <input
         type="text"
         :name="`name-${props.item.id}`"
         :id="`name-${props.item.id}`"
-        placeholder="Name"
+        :placeholder="t('schedule.slot.namePlaceholder')"
         v-if="editMode"
         v-model="newName"
         ref="input"
@@ -73,12 +76,15 @@ onMounted(() => {
       >
         {{ name }}
       </h3>
-      <button @click="emit('delete')" aria-label="Delete">
-        <font-awesome-icon icon="fa-solid fa-trash" />
+      <button
+        @click="emit('delete')"
+        :title="t('schedule.slot.delete')"
+      >
+        <font-awesome-icon icon="fa-solid fa-trash"/>
       </button>
     </div>
     <div v-if="props.hasAddMenu" class="menu">
-      <AddSlotMenu @add-slot="(type) => emit('add', type)" />
+      <AddSlotMenu @add-slot="(type) => emit('add', type)"/>
     </div>
   </div>
 </template>

@@ -12,7 +12,11 @@ import {
 import { useScheduleStore } from "@/stores/schedule";
 import { useContentStore } from "@/stores/content";
 import { gui } from "@wails/go/models";
+import { useI18n } from "@/stores/i18n";
+import SelectWrapper from "@/components/utils/SelectWrapper.vue";
 import adSchedulingStrategyDescriptor = gui.adSchedulingStrategyDescriptor;
+
+const { t } = useI18n();
 
 const generatorStore = useGeneratorStore();
 const { selectedScreenings } = storeToRefs(generatorStore);
@@ -57,9 +61,9 @@ const schedulingStrategyJson = computed(() => {
 const buttonText = computed(() => {
   switch (state.value) {
     case State.GENERATING:
-      return "Generating...";
+      return t("generator.generating");
     default:
-      return "Generate";
+      return ("generator.generate");
   }
 });
 
@@ -85,67 +89,72 @@ onMounted(async () => {
 
 <template>
   <section>
-    <h2>Generate</h2>
-    <h3>Options</h3>
+    <h2>{{ t("generator.title") }}</h2>
+    <h3>{{ t("generator.options.title") }}</h3>
     <div class="options">
-      <h4>Output directory:</h4>
+      <h4>{{ t("generator.options.outputDirectory") }}</h4>
       <span>{{ outputDirectory }}</span>
       <button class="col-right" @click="selectOutputDirectory">
-        <font-awesome-icon icon="fa-solid fa-folder-open" />
-        Select output directory
+        <font-awesome-icon icon="fa-solid fa-folder-open"/>
+        {{ t("generator.options.selectOutputDirectory") }}
       </button>
-      <h4>Ad Scheduling Strategy:</h4>
+      <h4>{{ t("generator.options.adSchedulingStrategy") }}</h4>
       <span>{{ selectedStrategy?.description }}</span>
-      <select
-        class="col-right"
-        name="schedulingStrategy"
-        id="schedulingStrategy"
-        v-model="selectedStrategy"
-      >
-        <option
-          v-for="s in schedulingStrategies"
-          :key="s.id"
-          :value="s"
-          :title="s.description"
-        >
-          {{ s.name }}
-        </option>
-      </select>
-      <h4 v-show="selectedStrategy?.parameters">Strategy Options:</h4>
-      <template v-for="param in selectedStrategy?.parameters" :key="param.name">
-        <span>{{ param.name }}:</span>
+      <SelectWrapper class="col-right">
         <select
-          class="col-right"
-          v-if="param.input.type === 'select'"
-          :name="param.name"
-          :id="param.name"
-          :value="param.input.defaultValue"
-          :ref="
-            // @ts-ignore
-            (el) => (strategyParamRefs[param.id] = el)
-          "
+          name="schedulingStrategy"
+          id="schedulingStrategy"
+          v-model="selectedStrategy"
         >
           <option
-            v-for="(option, id) in param.input.options"
-            :key="id"
-            :value="id"
+            v-for="s in schedulingStrategies"
+            :key="s.id"
+            :value="s"
+            :title="s.description"
           >
-            {{ option }}
+            {{ s.name }}
           </option>
         </select>
-        <input
-          class="col-right"
-          v-else-if="param.input.type === 'number'"
-          :type="param.input.type"
-          :min="param.input.min"
-          :max="param.input.max"
-          :step="param.input.step"
-          :value="param.input.defaultValue"
-          :ref="
-            // @ts-ignore
-            (el) => (strategyParamRefs[param.id] = el)
-          "
-        />
+      </SelectWrapper>
+      <template v-if="selectedStrategy?.parameters">
+        <h4>Strategy Options:</h4>
+        <template v-for="param in selectedStrategy.parameters" :key="param.name">
+          <span>{{ param.name }}</span>
+          <SelectWrapper class="col-right" v-if="param.input.type === 'select'">
+            <select
+              :name="param.name"
+              :id="param.name"
+              :value="param.input.defaultValue"
+              :ref="
+                // The following comment is required because TS doesn't recognize the element as input element
+                // @ts-ignore
+                (el) => (strategyParamRefs[param.id] = el)
+              "
+            >
+              <option
+                v-for="(option, id) in param.input.options"
+                :key="id"
+                :value="id"
+              >
+                {{ option }}
+              </option>
+            </select>
+          </SelectWrapper>
+          <input
+            class="col-right"
+            v-else-if="param.input.type === 'number'"
+            :type="param.input.type"
+            :min="param.input.min"
+            :max="param.input.max"
+            :step="param.input.step"
+            :value="param.input.defaultValue"
+            :ref="
+              // The following comment is required because TS doesn't recognize the element as input element
+              // @ts-ignore
+              (el) => (strategyParamRefs[param.id] = el)
+            "
+          />
+        </template>
       </template>
     </div>
     <div class="generate">
@@ -154,15 +163,13 @@ onMounted(async () => {
           generateButton: true,
           generating: state === State.GENERATING,
         }"
-        :disabled="
-          selectedScreenings.length === 0 || state === State.GENERATING
-        "
+        :disabled="selectedScreenings.length === 0 || state === State.GENERATING"
         @click="generate"
       >
-        <font-awesome-icon icon="fa-solid fa-clapperboard" />
+        <font-awesome-icon icon="fa-solid fa-clapperboard"/>
         <span>{{ buttonText }}</span>
       </button>
-      <p v-show="state === State.DONE">Done!</p>
+      <p v-show="state === State.DONE">{{ t("generator.done") }}</p>
     </div>
   </section>
 </template>

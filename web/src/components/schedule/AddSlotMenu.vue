@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { SlotTypes } from "@/types/scheduleSlot";
+import { useI18n } from "@/stores/i18n";
+
+const { t } = useI18n();
 
 const emit = defineEmits<{
   (e: "add-slot", type: SlotTypes): void;
@@ -12,9 +15,9 @@ function addSlot(type: SlotTypes) {
 
 <template>
   <div id="addMenu">
-    <button @click="addSlot(SlotTypes.TRAILER)">+ Add Trailer Slot</button>
-    <button @click="addSlot(SlotTypes.AD_BIN)">+ Add Ad Slot</button>
-    <button @click="addSlot(SlotTypes.CUSTOM)">+ Add Custom Slot</button>
+    <button @click="addSlot(SlotTypes.TRAILER)">{{ t("schedule.add.trailer") }}</button>
+    <button @click="addSlot(SlotTypes.AD_BIN)">{{ t("schedule.add.ad") }}</button>
+    <button @click="addSlot(SlotTypes.CUSTOM)">{{ t("schedule.add.custom") }}</button>
   </div>
 </template>
 

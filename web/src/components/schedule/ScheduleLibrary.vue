@@ -5,6 +5,9 @@ import { ScheduleTemplate } from "@/types/schedule";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { useScheduleStore } from "@/stores/schedule";
 import { useConfirmStore } from "@/stores/confirm";
+import { useI18n } from "@/stores/i18n";
+
+const { t } = useI18n();
 
 const templates = ref<ScheduleTemplate[]>([]);
 const schedule = useScheduleStore();
@@ -17,9 +20,7 @@ onMounted(async () => {
 });
 
 async function load(template: ScheduleTemplate) {
-  const confirm = await prompt(
-    `Do you really want to load the schedule template "${template.name}"? The current schedule will be discarded.`
-  );
+  const confirm = await prompt(t("schedule.library.loadConfirm", template.name));
   if (!confirm) return;
   schedule.set(template.scheduleTemplate);
 }
@@ -37,7 +38,7 @@ function deleteTemplate(template: ScheduleTemplate) {
 
 <template>
   <section class="column">
-    <h2>Saved Schedules</h2>
+    <h2>{{ t("schedule.library.title") }}</h2>
     <ul>
       <li
         v-for="template in templates"
@@ -46,11 +47,11 @@ function deleteTemplate(template: ScheduleTemplate) {
       >
         <span>{{ template.name }}</span>
         <div class="actions">
-          <button title="Clone" @click.stop="clone(template)">
-            <font-awesome-icon icon="fa-solid fa-clone" />
+          <button :title="t('schedule.library.clone')" @click.stop="clone(template)">
+            <font-awesome-icon icon="fa-solid fa-clone"/>
           </button>
-          <button title="Delete" @click.stop="deleteTemplate(template)">
-            <font-awesome-icon icon="fa-solid fa-trash" />
+          <button :title="t('schedule.library.delete')" @click.stop="deleteTemplate(template)">
+            <font-awesome-icon icon="fa-solid fa-trash"/>
           </button>
         </div>
       </li>

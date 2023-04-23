@@ -5,6 +5,9 @@ import { ref } from "vue";
 import LibraryItem from "@/components/content/library/LibraryItem.vue";
 import ExpandCollapseButton from "@/components/utils/ExpandCollapseButton.vue";
 import { storeToRefs } from "pinia";
+import { useI18n } from "@/stores/i18n";
+
+const { t } = useI18n();
 
 const { advertisements, screens } = storeToRefs(useResourcesStore());
 
@@ -22,14 +25,14 @@ function setExpanded(value: boolean) {
 <template>
   <section class="column">
     <h2>
-      <span>Library</span>
-      <ExpandCollapseButton type="expand" @click="setExpanded(true)" />
-      <ExpandCollapseButton type="collapse" @click="setExpanded(false)" />
+      <span>{{ t("content.library.title") }}</span>
+      <ExpandCollapseButton type="expand" @click="setExpanded(true)"/>
+      <ExpandCollapseButton type="collapse" @click="setExpanded(false)"/>
     </h2>
     <ul>
       <LibraryFolder v-model:expanded="screensExpanded">
         <template #name>
-          <strong>Screens</strong>
+          <strong>{{ t("content.library.screens") }}</strong>
         </template>
         <LibraryItem
           v-for="screen in screens"
@@ -39,7 +42,7 @@ function setExpanded(value: boolean) {
       </LibraryFolder>
       <LibraryFolder v-model:expanded="adsExpanded">
         <template #name>
-          <strong>Ads</strong>
+          <strong>{{ t("content.library.ads") }}</strong>
         </template>
         <LibraryFolder
           v-for="(entry, index) in advertisements"

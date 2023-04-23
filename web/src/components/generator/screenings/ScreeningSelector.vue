@@ -2,6 +2,9 @@
 import { storeToRefs } from "pinia";
 import { useGeneratorStore } from "@/stores/generator";
 import ScreeningItem from "@/components/generator/screenings/ScreeningItem.vue";
+import { useI18n } from "@/stores/i18n";
+
+const { t } = useI18n();
 
 const generatorStore = useGeneratorStore();
 const { selectedCinema } = storeToRefs(generatorStore);
@@ -9,9 +12,9 @@ const { selectedCinema } = storeToRefs(generatorStore);
 
 <template>
   <section class="column">
-    <h2>Screenings</h2>
+    <h2>{{ t("generator.cinemas.screenings") }}</h2>
     <p v-if="!selectedCinema" class="centered">
-      Please select a cinema in the left column
+      {{ t("generator.cinemas.screeningsPlaceholder") }}
     </p>
     <ul v-else>
       <ScreeningItem

@@ -5,6 +5,9 @@ import { useContentStore } from "@/stores/content";
 import { ContentType, Resource } from "@/types/resource";
 import DropArea from "@/components/content/DropArea.vue";
 import { storeToRefs } from "pinia";
+import { useI18n } from "@/stores/i18n";
+
+const { t } = useI18n();
 
 const { dragEnter, dragLeave, drop } = useDropArea(ContentType.ADVERTISEMENT);
 const contentStore = useContentStore();
@@ -21,7 +24,7 @@ function dropContent(event: DragEvent) {
 
 <template>
   <section class="column">
-    <h2>Unscheduled Content</h2>
+    <h2>{{ t("content.unscheduled") }}</h2>
     <DropArea
       class="content-list"
       :is-empty="unscheduledAds.length === 0"

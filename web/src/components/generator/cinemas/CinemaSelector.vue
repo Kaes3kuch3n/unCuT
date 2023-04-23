@@ -6,7 +6,10 @@ import { GetCinemas } from "@wails/go/gui/App";
 import { storeToRefs } from "pinia";
 import SelectedCinema from "@/components/generator/cinemas/SelectedCinema.vue";
 import CinemaItem from "@/components/generator/cinemas/CinemaItem.vue";
+import { useI18n } from "@/stores/i18n";
 import Cinema = dtos.Cinema;
+
+const { t } = useI18n();
 
 const { maxCinemaSearchResults } = storeToRefs(useDefaultsStore());
 
@@ -23,10 +26,10 @@ watchEffect(async () => {
 
 <template>
   <section class="column">
-    <h2>Cinemas</h2>
-    <SelectedCinema />
+    <h2>{{ t("generator.cinemas.title") }}</h2>
+    <SelectedCinema/>
     <label>
-      Search:
+      {{ t("generator.cinemas.search") }}
       <input
         type="text"
         name="cinemaSearch"

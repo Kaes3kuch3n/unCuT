@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { dtos } from "@wails/go/models";
 import { useGeneratorStore } from "@/stores/generator";
+import { useI18n } from "@/stores/i18n";
 import Cinema = dtos.Cinema;
+
+const { t } = useI18n();
 
 const { selectCinema } = useGeneratorStore();
 
@@ -14,7 +17,7 @@ const props = defineProps<{
   <li>
     <button class="cinema" @click="selectCinema(cinema)">
       <span>{{ props.cinema.name }}</span>
-      <span>Planned Screenings: {{ props.cinema.screenings.length }}</span>
+      <span>{{ t("generator.cinemas.plannedScreenings", props.cinema.screenings.length.toString()) }}</span>
     </button>
   </li>
 </template>

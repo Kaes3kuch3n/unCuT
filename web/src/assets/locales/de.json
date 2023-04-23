@@ -1,0 +1,84 @@
+{
+  "locale": "Deutsch",
+  "appName": "unCuT",
+  "tabs": {
+    "schedule": "Ablauf",
+    "content": "Inhalt",
+    "generate": "Generieren"
+  },
+  "confirm": {
+    "yes": "Ja",
+    "no": "Nein"
+  },
+  "error": {
+    "occurred": "Ein Fehler ist aufgetreten:",
+    "dismiss": "Okay"
+  },
+  "input": {
+    "confirm": "Speichern",
+    "abort": "Abbrechen"
+  },
+  "contentTypes": {
+    "trailer": "Trailer",
+    "ad": "Werbung",
+    "custom": "Benutzerdefiniert"
+  },
+  "schedule": {
+    "add": {
+      "trailer": "+ Trailer-Slot",
+      "ad": "+ Werbe-Slot",
+      "custom": "+ Benutzerdefinierter Slot"
+    },
+    "library": {
+      "title": "Gespeicherte Abläufe",
+      "loadConfirm": "Möchtest Du wirklich die Ablauf-Vorlage \"{0}\" laden? Der aktuell erstellte Ablauf wird überschrieben.",
+      "clone": "Klonen",
+      "delete": "Löschen"
+    },
+    "slot": {
+      "unnamed": "Unbenannt (Hier klicken, um einen Namen festzulegen)",
+      "namePlaceholder": "Name",
+      "delete": "Löschen"
+    }
+  },
+  "content": {
+    "editOptions": "Optionen bearbeiten",
+    "remove": "Entfernen",
+    "duration": "Dauer",
+    "durationDialog": "Bitte gib die Dauer in Sekunden an, für die dieses Bild angezeigt werden soll:",
+    "scheduled": "Geplanter Inhalt",
+    "unscheduled": "Dynamischer Inhalt",
+    "dropAreaDescription": "Ziehe Assets aus der Mediathek auf der linken Seite hierher, um sie diesem Slot hinzuzufügen",
+    "library": {
+      "title": "Mediathek",
+      "screens": "Screens",
+      "ads": "Werbung"
+    }
+  },
+  "generator": {
+    "title": "Generieren",
+    "cinemas": {
+      "title": "Kinos",
+      "search": "Suche:",
+      "selected": "Ausgewähltes Kino:",
+      "none": "–",
+      "deselect": "Auswahl entfernen",
+      "plannedScreenings": "Geplante Vorführungen: {0}",
+      "screenings": "Vorführungen",
+      "screeningsPlaceholder": "Bitte wähle in der linken Spalte ein Kino aus"
+    },
+    "options": {
+      "title": "Optionen",
+      "outputDirectory": "Ausgabeordner:",
+      "selectOutputDirectory": "Ausgabeordner auswählen",
+      "adSchedulingStrategy": "Werbeplanungsstrategie:"
+    },
+    "generate": "Generieren",
+    "generating": "Generiere...",
+    "done": "Fertig!"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "language": "Sprache:"
+  }
+}
