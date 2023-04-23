@@ -17,6 +17,7 @@ func main() {
 		&db.Advertisement{},
 		&db.Cinema{},
 		&db.Movie{},
+		&db.MovieScreen{},
 		&db.Screen{},
 		&db.Screening{},
 		&db.ScreenType{},

@@ -9,14 +9,13 @@ type Movie struct {
 	ID          uint `gorm:"primaryKey"`
 	Name        string
 	TrailerPath string
-	PosterPath  string
 }
 
 func (m *Movie) toEntity() (movie *entities.Movie) {
 	return &entities.Movie{
-		Name:             m.Name,
-		TrailerPath:      m.TrailerPath,
-		PosterScreenPath: m.PosterPath,
+		ID:          m.ID,
+		Name:        m.Name,
+		TrailerPath: m.TrailerPath,
 	}
 }
 
@@ -35,7 +34,6 @@ func GetUpcomingMovies(db *gorm.DB, screening *entities.Screening, count int) (m
 			ID:          uint(movie["Movie__id"].(int64)),
 			Name:        movie["Movie__name"].(string),
 			TrailerPath: movie["Movie__trailer_path"].(string),
-			PosterPath:  movie["Movie__poster_path"].(string),
 		}
 		movies = append(movies, movie.toEntity())
 	}

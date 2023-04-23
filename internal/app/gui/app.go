@@ -198,7 +198,8 @@ func createLeadForScreening(
 
 	// TODO: Move hardcoded "upcoming" id screen name to ? (some json file? config?)
 	upcomingMovies := db.GetUpcomingMovies(database, screening, template.GetTrailerCount())
-	l.AddTrailers(upcomingMovies, screening.Cinema.Screens[2])
+	movieScreens := db.GetScreensForMovies(database, screening.Cinema, upcomingMovies)
+	l.AddTrailers(upcomingMovies, movieScreens, screening.Cinema.Screens[2])
 	l.AddAds(ads)
 
 	return l

@@ -1,7 +1,7 @@
 package entities
 
 type Movie struct {
-	Name             string
-	TrailerPath      string
-	PosterScreenPath string
+	ID          uint
+	Name        string
+	TrailerPath string
 }

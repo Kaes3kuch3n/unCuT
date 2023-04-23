@@ -43,7 +43,7 @@ func (l *Lead) AddScreens(screens entities.ScreenMap) {
 	}
 }
 
-func (l *Lead) AddTrailers(upcomingMovies []*entities.Movie, upcomingScreen *entities.Screen) {
+func (l *Lead) AddTrailers(upcomingMovies []*entities.Movie, movieScreens []*entities.MovieScreen, upcomingScreen *entities.Screen) {
 	trailerSlots := l.getSlots(trailer)
 	if len(upcomingMovies) < len(trailerSlots) {
 		// TODO: Add logic for distributing less than `trailerCount` trailers
@@ -51,7 +51,7 @@ func (l *Lead) AddTrailers(upcomingMovies []*entities.Movie, upcomingScreen *ent
 	}
 
 	for i, trailerSlot := range trailerSlots {
-		resources, err := GetTrailerResources(upcomingMovies[i], upcomingScreen)
+		resources, err := GetTrailerResources(upcomingMovies[i], movieScreens[i], upcomingScreen)
 		if err != nil {
 			panic(fmt.Errorf("failed to add trailer [%w]", err))
 		}

@@ -23,7 +23,7 @@ type Resource struct {
 	duration     float64
 }
 
-func GetTrailerResources(m *entities.Movie, upcomingScreen *entities.Screen) (resources []*Resource, err error) {
+func GetTrailerResources(m *entities.Movie, movieScreen *entities.MovieScreen, upcomingScreen *entities.Screen) (resources []*Resource, err error) {
 	var r *Resource
 	r, err = NewImageResource(upcomingScreen.FilePath, defaultImageDuration)
 	if err != nil {
@@ -35,7 +35,7 @@ func GetTrailerResources(m *entities.Movie, upcomingScreen *entities.Screen) (re
 		return nil, err
 	}
 	resources = append(resources, r)
-	r, err = NewImageResource(m.PosterScreenPath, defaultImageDuration)
+	r, err = NewImageResource(movieScreen.FilePath, defaultImageDuration)
 	if err != nil {
 		return nil, err
 	}

@@ -21,6 +21,7 @@ func (c *Cinema) toEntity() (cinema *entities.Cinema) {
 	}
 
 	return &entities.Cinema{
+		ID:         c.ID,
 		Name:       c.Name,
 		Screens:    c.mapScreens(),
 		Screenings: screenings,
